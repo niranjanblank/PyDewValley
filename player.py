@@ -37,6 +37,7 @@ class Player(pygame.sprite.Sprite):
         if self.frame_index >=  len(self.animations[self.status]):
             self.frame_index = 0
         self.image = self.animations[self.status][int(self.frame_index)]
+        self.get_status()
 
     def input(self):
         keys = pygame.key.get_pressed()
@@ -60,6 +61,10 @@ class Player(pygame.sprite.Sprite):
             self.direction.x = 0
 
 
+    def get_status(self):
+        # if the player is not moving:
+        if self.direction.magnitude() == 0:
+            self.status = self.status.split('_')[0] + '_idle'
 
     def move(self, dt):
 
