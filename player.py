@@ -103,7 +103,6 @@ class Player(pygame.sprite.Sprite):
                 self.timers['seed use'].activate()
                 self.direction = pygame.math.Vector2()
                 self.frame_index = 0
-                print('use seed')
             # change seed
             if keys[pygame.K_e] and not self.timers['seed switch'].active:
                 self.timers['seed switch'].activate()
@@ -111,8 +110,6 @@ class Player(pygame.sprite.Sprite):
                 if self.seed_index >= len(self.seeds):
                     self.seed_index = 0
                 self.selected_seed = self.seeds[self.seed_index]
-                print(self.selected_seed)
-
 
     def get_status(self):
         # setting idle to status if player isn't moving
@@ -128,7 +125,6 @@ class Player(pygame.sprite.Sprite):
             timer.update()
 
     def move(self, dt):
-
         # normalizing a vector
         if self.direction.magnitude() > 0:
             self.direction = self.direction.normalize()
